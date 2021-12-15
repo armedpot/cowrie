@@ -1,0 +1,15 @@
+version: '3.6'
+
+services:
+  cowrie:
+    container_name: cowrie
+    restart: always
+    ports:
+      - "22:2222"
+      - "23:2223"
+    read_only: true
+    image: "armedpot/cowrie:${COWRIE_VERSION}"
+    tempfs: "/home/cowrie/cowrie-git/var/run:uid=2000,gid=2000"
+    volumes:
+      - "~/data/cowrie/log:/home/cowrie/cowrie-git/var/log/cowrie"
+      - "~/data/cowrie/data:/home/cowrie/cowrie-git/var/lib/cowrie"
