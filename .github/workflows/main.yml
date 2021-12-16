@@ -1,17 +1,11 @@
 name: Docker Image CI cowrie
 
 on:
-  push:
-    branches:
-      - main
+ release:
+    types: [published]
     tags:
       - "v*.*.*"
 
-  pull_request:
-    branches:
-     - main
-    tags:
-      - "v*.*.*"
 jobs:
   docker:
     runs-on: ubuntu-latest
