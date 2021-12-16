@@ -1,10 +1,14 @@
+# Dockerized Cowrie Honeypot
+
+this repository is about dockerizing the SSH honeypot Cowrie. The honeypot simulates a vulnerable SSH & Telnet server. The container was built for the hardware platforms x86 as well as ARM and ARM64 and is therefore also usable on hardware platforms like Raspberry Pi, Odroid, FriendlyArm, Banana Pi, Apple M1 or BeagleBone.
+
 # Honeypot Cowrie
 
-Cowrie is a medium interactive SSH & Telnet honeypot. Cowrie was developed by Michel Oosthof based on Kippo and published on Github. Besides an SSH login, the honeypot also emulates a filesystem as well as over 50 different operating system commands like wget, curl, top, ls, df, dmesg, mount, sync, yum, apt, cat dd and more. It is also possible for an attacker to download switching code/tools via wget, which is then made available virtually on the operating system. The downloads are also saved and can be evaluated. The attackers' sessions are recorded and can be played back using a player.
+Cowrie is a medium interactive SSH & Telnet honeypot. Cowrie was developed by Michel Oosthof based on Kippo and published on Github. Besides an SSH login, the honeypot also emulates a filesystem as well as over 50 different linux system commands like wget, curl, top, ls, df, dmesg, mount, sync, yum, apt, cat dd and more. It is also possible for an attacker to download tools via wget, which is then made available virtually on the operating system. The downloads are also saved and can be evaluated. The attackers sessions are recorded and can be played back using a player.
 
 # Installation
 
-The Docker container uses the user cowrie with the user ID 2000 and the group ID 2000 . For the container to write its logs on the host system, a user with UserID 2000 and GroupID 2000 must also exist here or be created beforehand.
+The Docker container uses the user cowrie with the userid 2000 and the groupid 2000. For the container to write its logs on the host system, a user with userid 2000 and groupid 2000 must also exist here or be created beforehand.
 
 ```bash
 user:~$ sudo groupadd --gid 2000 armedpot
@@ -17,7 +21,7 @@ armedpot:~$ cd cowrie
 armedpot:~$ [[ ! -f ~/data/cowrie/log/cowrie.db ]] && cp dist/cowrie.db ~/data/cowrie/log/cowrie.db
 ```
 
-Once the user and group have been created with ID 2000 each, the Github repository has been cloned, the required directories have been created, the cowrie directory has been created, and the sqlite3 cowrie.db has been copied to the directory if it does not exist, cowrie can be started via Docker compose as follows:
+Once the user and group have been created with id 2000 each, the Github repository has been cloned, required directories have been created, cowrie directory has been created, and sqlite3 cowrie.db has been copied to the directory if it does not exist, cowrie can be started via Docker compose as follows:
 
 ```bash
 armedpot:~/cowrie$ docker-compose up -d
